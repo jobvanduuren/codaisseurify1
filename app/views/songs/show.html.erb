@@ -1,0 +1,8 @@
+<h1><%= @song.name %></h1>
+
+<p>album: <%= @song.album %></p>
+<%= image_tag @song.image_url %>
+<p>duration: <%= @song.duration %> seconds</p>
+
+<%= link_to "[Delete]", song_path(@song.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to "[Edit]", edit_song_path(@song.id) %>

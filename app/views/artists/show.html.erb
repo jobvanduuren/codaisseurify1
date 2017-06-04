@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @artist.name %>
+</p>
+<p>
+  <strong>Genre:</strong>
+  <%= @artist.genre %>
+</p>
+<%= image_tag @artist.image_url %>
+
+<h4>List of Songs</h4>
+
+
+
+<% if @artist.songs.any? %>
+  <ul>
+    <% @artist.songs.each do |song| %>
+        <p><%= link_to song.name, song_path(song.id) %></p>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no songs for this artist.</p>
+<% end %>
+
+<%= link_to "[Add a new song]", new_song_path %>
+<br><br>
+<%= link_to "[Songs in alphabetical order]", songs_path %>
+<br><br>
+<hr>
+<br>
+<%= link_to "[Delete artist]", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
